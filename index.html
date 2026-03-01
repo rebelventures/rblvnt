@@ -6,72 +6,129 @@
   <title>RBLVNT | Rebel Ventures 🏴‍☠️</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    :root { --neon-cyan: #00f0ff; --neon-pink: #ff00aa; --neon-purple: #8a2be2; --glitch: #ff3366; }
-    body { margin:0; padding:0; font-family:'Segoe UI',sans-serif; background:linear-gradient(135deg,#0a0015,#150033); color:#e0e0e0; min-height:100vh; }
-    nav { background:rgba(0,0,0,0.8); padding:1rem; text-align:center; border-bottom:2px solid var(--neon-cyan); position:sticky; top:0; z-index:100; }
-    nav a { color:var(--neon-cyan); margin:0 20px; text-decoration:none; font-weight:bold; }
-    nav a:hover { text-shadow:0 0 15px var(--neon-cyan); }
-    .hero { text-align:center; padding:60px 20px 30px; }
+    :root { 
+      --neon-cyan: #00f0ff; 
+      --neon-pink: #ff00aa; 
+      --neon-purple: #8a2be2; 
+      --glitch: #ff3366; 
+    }
+    body { 
+      margin:0; padding:0; 
+      font-family:'Segoe UI',sans-serif; 
+      background:linear-gradient(135deg,#0a0015,#150033); 
+      color:#e0e0e0; 
+      min-height:100vh; 
+      overflow-x:hidden; 
+    }
+    nav { 
+      background:rgba(0,0,0,0.85); 
+      padding:1.2rem; 
+      text-align:center; 
+      border-bottom:3px solid var(--neon-cyan); 
+      position:sticky; top:0; z-index:100; 
+      backdrop-filter:blur(8px); 
+    }
+    nav a { 
+      color:var(--neon-cyan); 
+      margin:0 25px; 
+      text-decoration:none; 
+      font-weight:bold; 
+      font-size:1.2rem; 
+    }
+    nav a:hover { 
+      text-shadow:0 0 20px var(--neon-cyan); 
+      transform:scale(1.1); 
+      display:inline-block; 
+    }
+    .hero { 
+      text-align:center; 
+      padding:100px 20px 60px; 
+    }
     .logo-img { 
-      max-width:800px;  /* Even bigger ship – dial back to 700px if needed */
+      max-width:900px; 
       height:auto; 
-      filter:drop-shadow(0 0 80px var(--neon-cyan)); 
-      transition:all 0.5s ease; 
+      filter:drop-shadow(0 0 100px var(--neon-cyan)); 
+      transition:all 0.6s ease; 
     }
     .logo-img:hover { 
-      transform:scale(1.04) rotate(3deg); 
-      animation:glitch 1.2s infinite; 
-      filter:drop-shadow(0 0 110px var(--neon-pink)) brightness(1.3); 
+      transform:scale(1.03) rotate(5deg); 
+      animation:glitch 1.5s infinite; 
+      filter:drop-shadow(0 0 140px var(--neon-pink)) brightness(1.5); 
     }
     @keyframes glitch { 
-      0%{transform:translate(0) scale(1.04) rotate(3deg);} 
-      20%{transform:translate(-8px,8px) scale(1.04) rotate(3deg);} 
-      40%{transform:translate(8px,-8px) scale(1.04) rotate(3deg);} 
-      60%{transform:translate(-8px,0) scale(1.04) rotate(3deg);} 
-      80%{transform:translate(8px,8px) scale(1.04) rotate(3deg);} 
-      100%{transform:translate(0) scale(1.04) rotate(3deg);} 
+      0%{transform:translate(0) scale(1.03) rotate(5deg);} 
+      20%{transform:translate(-12px,12px) scale(1.03) rotate(5deg);} 
+      40%{transform:translate(12px,-12px) scale(1.03) rotate(5deg);} 
+      60%{transform:translate(-12px,0) scale(1.03) rotate(5deg);} 
+      80%{transform:translate(12px,12px) scale(1.03) rotate(5deg);} 
+      100%{transform:translate(0) scale(1.03) rotate(5deg);} 
     }
-    h1 { font-size:5rem; margin:20px 0 10px; color:var(--neon-cyan); text-shadow:0 0 60px var(--neon-cyan); }
-    .tagline { font-size:2rem; color:var(--neon-pink); text-shadow:0 0 35px var(--neon-pink); }
-    section { padding:30px 20px; max-width:1200px; margin:0 auto; }
-    .btc-section { 
-      background:rgba(0,0,0,0.7); 
-      border:2px solid var(--neon-purple); 
-      border-radius:15px; 
-      padding:25px; 
-      margin:0 20px 50px; 
+    h1 { 
+      font-size:6.5rem; 
+      margin:40px 0 20px; 
+      color:var(--neon-cyan); 
+      text-shadow:0 0 70px var(--neon-cyan), 0 0 140px var(--neon-purple); 
+      letter-spacing:5px; 
+    }
+    .tagline { 
+      font-size:2.6rem; 
+      color:var(--neon-pink); 
+      text-shadow:0 0 40px var(--neon-pink); 
+      margin:0; 
+    }
+    .links-section { 
+      padding:60px 20px 100px; 
+      max-width:1200px; 
+      margin:0 auto; 
       text-align:center; 
     }
-    .ticker-wrapper { 
-      max-width:350px; 
-      margin:20px auto; 
-      border:2px solid var(--neon-cyan); 
-      border-radius:12px; 
-      overflow:hidden; 
-      box-shadow:0 0 40px var(--neon-cyan); 
+    .links-title { 
+      color:var(--neon-pink); 
+      font-size:4rem; 
+      margin-bottom:60px; 
+      text-shadow:0 0 50px var(--neon-pink); 
     }
-    .ticker-wrapper iframe, .ticker-wrapper div { width:100% !important; }
-    .links { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin-top:40px; }
+    .links { 
+      display:grid; 
+      grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); 
+      gap:40px; 
+    }
     .link-card { 
-      background:rgba(255,255,255,0.05); 
-      padding:35px; 
-      border-radius:15px; 
-      text-align:center; 
-      border:2px solid var(--neon-pink); 
-      transition:all 0.4s; 
+      background:rgba(255,255,255,0.04); 
+      padding:50px 30px; 
+      border-radius:25px; 
+      border:3px solid var(--neon-pink); 
+      transition:all 0.4s ease; 
+      backdrop-filter:blur(6px); 
     }
     .link-card:hover { 
-      transform:translateY(-12px); 
-      box-shadow:0 0 60px var(--neon-pink); 
+      transform:translateY(-15px) scale(1.04); 
+      box-shadow:0 0 80px var(--neon-pink); 
       border-color:var(--neon-cyan); 
     }
-    footer { text-align:center; padding:50px 20px; opacity:0.7; font-size:1rem; }
+    .link-card i { 
+      font-size:5.5rem; 
+      margin-bottom:25px; 
+    }
+    .link-card h3 { 
+      font-size:2.2rem; 
+      margin:15px 0 10px; 
+    }
+    .link-card p { 
+      font-size:1.3rem; 
+      opacity:0.9; 
+    }
+    footer { 
+      text-align:center; 
+      padding:80px 20px 40px; 
+      opacity:0.6; 
+      font-size:1.1rem; 
+      border-top:1px solid var(--neon-purple); 
+    }
   </style>
 </head>
 <body>
   <nav>
-    <a href="#btc">BTC TICKER</a>
-    <a href="#links">REBEL LINKS</a>
     <a href="https://x.com/sovereignmethod" target="_blank">@sovereignmethod 🏴‍☠️</a>
   </nav>
 
@@ -81,31 +138,21 @@
     <p class="tagline">Sailing the storm • Owning the chain • Building empires 🏴‍☠️</p>
   </section>
 
-  <section id="btc" class="btc-section">
-    <h2 style="color:var(--neon-cyan); font-size:2.8rem; margin-bottom:20px;">BITCOIN LIVE TICKER (CoinDesk)</h2>
-    <div class="ticker-wrapper">
-      <!-- Larger MPU size version -->
-      <div id="coindesk-widget" data-size="mpu"></div>
-      <script type="text/javascript" src="//widget.coindesk.com/bpiticker/coindesk-widget.min.js"></script>
-    </div>
-    <p style="font-size:1.1rem; opacity:0.8; margin-top:15px;">Powered by CoinDesk BPI • Real-time USD price + change</p>
-  </section>
-
-  <section id="links">
-    <h2 style="text-align:center; color:var(--neon-pink); font-size:3rem;">REBEL ARMORY</h2>
+  <section class="links-section">
+    <h2 class="links-title">REBEL ARMORY</h2>
     <div class="links">
       <a href="https://grok.x.ai" target="_blank" class="link-card">
-        <i class="fas fa-robot fa-4x" style="color:#00f0ff; margin-bottom:15px;"></i>
+        <i class="fas fa-robot"></i>
         <h3>Grok</h3>
         <p>xAI truth machine – no bullshit</p>
       </a>
       <a href="https://www.luxalgo.com/chat/" target="_blank" class="link-card">
-        <i class="fas fa-chart-line fa-4x" style="color:#ff00aa; margin-bottom:15px;"></i>
+        <i class="fas fa-chart-line"></i>
         <h3>LuxAlgo Chat</h3>
         <p>AI trading alpha – elite signals</p>
       </a>
       <a href="https://www.cnbc.com/bitcoin/" target="_blank" class="link-card">
-        <i class="fas fa-newspaper fa-4x" style="color:#f7931a; margin-bottom:15px;"></i>
+        <i class="fas fa-newspaper"></i>
         <h3>CNBC Bitcoin</h3>
         <p>Mainstream chaos coverage</p>
       </a>
