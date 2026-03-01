@@ -18,10 +18,10 @@
     h1 { font-size:5.5rem; margin:30px 0 15px; color:var(--neon-cyan); text-shadow:0 0 50px var(--neon-cyan); }
     .tagline { font-size:2.2rem; color:var(--neon-pink); text-shadow:0 0 30px var(--neon-pink); }
     section { padding:40px 20px; max-width:1200px; margin:0 auto; }
-    .btc-section { background:rgba(0,0,0,0.7); border:2px solid var(--neon-purple); border-radius:15px; padding:20px; margin-bottom:40px; }
-    .chart-wrapper { height:400px; max-height:400px; overflow:hidden; margin:20px auto; position:relative; border:1px dashed #444; background:#111; } /* Visual border for debug */
-    .chart-fallback { display:block; text-align:center; color:#ff3366; padding:20px; font-size:1.2rem; }
-    @media (max-width:768px) { .chart-wrapper { height:300px; max-height:300px; } .logo-img { max-width:380px; } h1 { font-size:4rem; } .tagline { font-size:1.8rem; } }
+    .btc-section { background:rgba(0,0,0,0.7); border:2px solid var(--neon-purple); border-radius:15px; padding:20px; margin-bottom:60px; }
+    .chart-wrapper { height:350px; max-height:350px; overflow:hidden; margin:20px auto; position:relative; background:#111; border:1px solid #333; }
+    .chart-fallback { display:block; text-align:center; color:#ff3366; padding:40px 20px; font-size:1.4rem; font-weight:bold; background:rgba(0,0,0,0.5); border-radius:10px; margin:20px 0; }
+    @media (max-width:768px) { .chart-wrapper { height:280px; max-height:280px; } .logo-img { max-width:380px; } h1 { font-size:4rem; } .tagline { font-size:1.8rem; } }
     .links { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; }
     .link-card { background:rgba(255,255,255,0.05); padding:30px; border-radius:15px; text-align:center; border:2px solid var(--neon-pink); transition:all 0.4s; }
     .link-card:hover { transform:translateY(-10px); box-shadow:0 0 50px var(--neon-pink); border-color:var(--neon-cyan); }
@@ -45,7 +45,7 @@
     <h2 style="text-align:center; color:var(--neon-cyan); font-size:3rem;">BITCOIN LIVE CHART</h2>
     <div class="chart-wrapper">
       <div id="tradingview_chart"></div>
-      <p class="chart-fallback">Chart failed to load? Try incognito mode, disable ad-blockers, or refresh. TradingView embed can be picky on static sites.</p>
+      <p class="chart-fallback">Chart not loading? Disable ad-blockers/extensions, try incognito mode, or check firewall (common on TradingView embeds). Refresh to retry.</p>
     </div>
   </section>
 
@@ -97,12 +97,15 @@
 
     function resizeChart() {
       const chartDiv = document.getElementById('tradingview_chart');
-      if (chartDiv) chartDiv.style.height = '100%';
-      chartDiv.style.width = '100%';
+      if (chartDiv) {
+        chartDiv.style.height = '100%';
+        chartDiv.style.width = '100%';
+      }
     }
     window.addEventListener('resize', resizeChart);
     setTimeout(resizeChart, 1000);
-    setTimeout(resizeChart, 5000); // Extra retry
+    setTimeout(resizeChart, 5000);
+    setTimeout(resizeChart, 15000); // Extra push
   </script>
 </body>
 </html>
