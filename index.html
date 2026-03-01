@@ -7,84 +7,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root { --neon-cyan: #00f0ff; --neon-pink: #ff00aa; --neon-purple: #8a2be2; --glitch: #ff3366; }
-    body {
-      margin: 0; padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0a0015, #150033);
-      color: #e0e0e0;
-      min-height: 100vh;
-    }
-    nav { 
-      background: rgba(0,0,0,0.8); 
-      padding: 1rem; 
-      text-align: center; 
-      border-bottom: 2px solid var(--neon-cyan); 
-      position: sticky; top: 0; z-index: 100; 
-    }
-    nav a { color: var(--neon-cyan); margin: 0 20px; text-decoration: none; font-weight: bold; }
-    nav a:hover { text-shadow: 0 0 15px var(--neon-cyan); }
-    .hero { 
-      text-align: center; 
-      padding: 100px 20px 50px; 
-    }
-    .logo-img { 
-      max-width: 520px; 
-      height: auto; 
-      filter: drop-shadow(0 0 60px var(--neon-cyan)); 
-      transition: all 0.5s ease; 
-    }
-    .logo-img:hover { 
-      transform: scale(1.08) rotate(2deg); 
-      animation: glitch 1s infinite; 
-      filter: drop-shadow(0 0 90px var(--neon-pink)) brightness(1.3); 
-    }
-    @keyframes glitch {
-      0% { transform: translate(0) scale(1.08) rotate(2deg); }
-      20% { transform: translate(-6px, 6px) scale(1.08) rotate(2deg); }
-      40% { transform: translate(6px, -6px) scale(1.08) rotate(2deg); }
-      60% { transform: translate(-6px, 0) scale(1.08) rotate(2deg); }
-      80% { transform: translate(6px, 6px) scale(1.08) rotate(2deg); }
-      100% { transform: translate(0) scale(1.08) rotate(2deg); }
-    }
-    h1 { font-size: 5.5rem; margin: 30px 0 15px; color: var(--neon-cyan); text-shadow: 0 0 50px var(--neon-cyan); }
-    .tagline { font-size: 2.2rem; color: var(--neon-pink); text-shadow: 0 0 30px var(--neon-pink); }
-    section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
-    .btc-section { 
-      background: rgba(0,0,0,0.7); 
-      border: 2px solid var(--neon-purple); 
-      border-radius: 15px; 
-      padding: 20px; 
-      margin-bottom: 40px; /* Extra space before links */
-    }
-    .chart-wrapper { 
-      height: 450px; /* Shorter to prevent blowout */
-      max-height: 450px;
-      overflow: hidden; /* Clip any overflowing iframe crap */
-      margin: 20px auto; 
-      position: relative; 
-    }
-    @media (max-width: 768px) {
-      .chart-wrapper { height: 350px; max-height: 350px; }
-      .logo-img { max-width: 380px; }
-      h1 { font-size: 4rem; }
-      .tagline { font-size: 1.8rem; }
-      section { padding: 30px 15px; }
-    }
-    .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-    .link-card { 
-      background: rgba(255,255,255,0.05); 
-      padding: 30px; 
-      border-radius: 15px; 
-      text-align: center; 
-      border: 2px solid var(--neon-pink); 
-      transition: all 0.4s; 
-    }
-    .link-card:hover { 
-      transform: translateY(-10px); 
-      box-shadow: 0 0 50px var(--neon-pink); 
-      border-color: var(--neon-cyan); 
-    }
-    footer { text-align: center; padding: 40px; opacity: 0.8; font-size: 1rem; }
+    body { margin:0; padding:0; font-family:'Segoe UI',sans-serif; background:linear-gradient(135deg,#0a0015,#150033); color:#e0e0e0; min-height:100vh; }
+    nav { background:rgba(0,0,0,0.8); padding:1rem; text-align:center; border-bottom:2px solid var(--neon-cyan); position:sticky; top:0; z-index:100; }
+    nav a { color:var(--neon-cyan); margin:0 20px; text-decoration:none; font-weight:bold; }
+    nav a:hover { text-shadow:0 0 15px var(--neon-cyan); }
+    .hero { text-align:center; padding:100px 20px 50px; }
+    .logo-img { max-width:520px; height:auto; filter:drop-shadow(0 0 60px var(--neon-cyan)); transition:all 0.5s ease; }
+    .logo-img:hover { transform:scale(1.08) rotate(2deg); animation:glitch 1s infinite; filter:drop-shadow(0 0 90px var(--neon-pink)) brightness(1.3); }
+    @keyframes glitch { 0%{transform:translate(0) scale(1.08) rotate(2deg);} 20%{transform:translate(-6px,6px) scale(1.08) rotate(2deg);} 40%{transform:translate(6px,-6px) scale(1.08) rotate(2deg);} 60%{transform:translate(-6px,0) scale(1.08) rotate(2deg);} 80%{transform:translate(6px,6px) scale(1.08) rotate(2deg);} 100%{transform:translate(0) scale(1.08) rotate(2deg);} }
+    h1 { font-size:5.5rem; margin:30px 0 15px; color:var(--neon-cyan); text-shadow:0 0 50px var(--neon-cyan); }
+    .tagline { font-size:2.2rem; color:var(--neon-pink); text-shadow:0 0 30px var(--neon-pink); }
+    section { padding:40px 20px; max-width:1200px; margin:0 auto; }
+    .btc-section { background:rgba(0,0,0,0.7); border:2px solid var(--neon-purple); border-radius:15px; padding:20px; margin-bottom:40px; }
+    .chart-wrapper { height:400px; max-height:400px; overflow:hidden; margin:20px auto; position:relative; border:1px dashed #444; background:#111; } /* Visual border for debug */
+    .chart-fallback { display:block; text-align:center; color:#ff3366; padding:20px; font-size:1.2rem; }
+    @media (max-width:768px) { .chart-wrapper { height:300px; max-height:300px; } .logo-img { max-width:380px; } h1 { font-size:4rem; } .tagline { font-size:1.8rem; } }
+    .links { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; }
+    .link-card { background:rgba(255,255,255,0.05); padding:30px; border-radius:15px; text-align:center; border:2px solid var(--neon-pink); transition:all 0.4s; }
+    .link-card:hover { transform:translateY(-10px); box-shadow:0 0 50px var(--neon-pink); border-color:var(--neon-cyan); }
+    footer { text-align:center; padding:40px; opacity:0.8; font-size:1rem; }
   </style>
 </head>
 <body>
@@ -104,7 +45,7 @@
     <h2 style="text-align:center; color:var(--neon-cyan); font-size:3rem;">BITCOIN LIVE CHART</h2>
     <div class="chart-wrapper">
       <div id="tradingview_chart"></div>
-      <p id="chart-fallback" style="display:none; text-align:center; color:#ff3366; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">Chart loading... refresh if stuck.</p>
+      <p class="chart-fallback">Chart failed to load? Try incognito mode, disable ad-blockers, or refresh. TradingView embed can be picky on static sites.</p>
     </div>
   </section>
 
@@ -157,15 +98,11 @@
     function resizeChart() {
       const chartDiv = document.getElementById('tradingview_chart');
       if (chartDiv) chartDiv.style.height = '100%';
+      chartDiv.style.width = '100%';
     }
     window.addEventListener('resize', resizeChart);
-    setTimeout(resizeChart, 2000);
-
-    setTimeout(() => {
-      if (!document.querySelector('iframe[src*="tradingview"]')) {
-        document.getElementById('chart-fallback').style.display = 'block';
-      }
-    }, 10000);
+    setTimeout(resizeChart, 1000);
+    setTimeout(resizeChart, 5000); // Extra retry
   </script>
 </body>
 </html>
