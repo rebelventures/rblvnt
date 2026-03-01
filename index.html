@@ -6,142 +6,156 @@
   <title>RBLVNT | Rebel Ventures 🏴‍☠️</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    :root { --neon-cyan: #00f0ff; --neon-pink: #ff00aa; --neon-purple: #8a2be2; }
+    :root { --neon-cyan: #00f0ff; --neon-pink: #ff00aa; --neon-purple: #8a2be2; --glitch: #ff3366; }
     body {
       margin: 0; padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0a0a1f, #1a0033);
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a0015, #150033);
       color: #e0e0e0;
       min-height: 100vh;
-      overflow-x: hidden;
     }
-    nav {
-      background: rgba(0,0,0,0.8);
-      padding: 1rem;
-      text-align: center;
-      border-bottom: 2px solid var(--neon-cyan);
-      position: sticky; top: 0; z-index: 100;
-    }
-    nav a { color: var(--neon-cyan); margin: 0 15px; text-decoration: none; font-weight: bold; }
+    nav { background: rgba(0,0,0,0.8); padding: 1rem; text-align: center; border-bottom: 2px solid var(--neon-cyan); position: sticky; top: 0; z-index: 100; }
+    nav a { color: var(--neon-cyan); margin: 0 20px; text-decoration: none; font-weight: bold; }
     nav a:hover { text-shadow: 0 0 15px var(--neon-cyan); }
-    .hero {
-      text-align: center;
-      padding: 80px 20px 40px;
-      background: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
-      position: relative;
+    .hero { text-align: center; padding: 80px 20px 40px; position: relative; }
+    .logo-svg { width: 300px; height: 300px; filter: drop-shadow(0 0 40px var(--neon-cyan)); transition: all 0.4s; }
+    .logo-svg:hover { animation: glitch 0.8s infinite; }
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-5px, 5px); }
+      40% { transform: translate(5px, -5px); }
+      60% { transform: translate(-5px, 0); }
+      80% { transform: translate(5px, 5px); }
+      100% { transform: translate(0); }
     }
-    .hero::before { content: ''; position: absolute; inset: 0; background: rgba(10,10,31,0.85); }
-    .logo-svg { width: 280px; height: 280px; filter: drop-shadow(0 0 30px var(--neon-cyan)); }
-    h1 { font-size: 5rem; margin: 20px 0 10px; color: var(--neon-cyan); text-shadow: 0 0 40px var(--neon-cyan); }
-    .tagline { font-size: 1.8rem; color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); }
-    section { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
-    .btc-section { background: rgba(0,0,0,0.6); border: 2px solid var(--neon-purple); }
-    #ticker {
-      font-size: 2.2rem; font-weight: bold; text-align: center;
-      padding: 15px; background: #000; border-radius: 12px;
-      margin: 20px auto; max-width: 500px;
-      box-shadow: 0 0 30px var(--neon-cyan);
-    }
+    h1 { font-size: 5.5rem; margin: 10px 0; color: var(--neon-cyan); text-shadow: 0 0 50px var(--neon-cyan); }
+    .tagline { font-size: 2rem; color: var(--neon-pink); text-shadow: 0 0 25px var(--neon-pink); }
+    section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+    .btc-section { background: rgba(0,0,0,0.7); border: 2px solid var(--neon-purple); border-radius: 15px; }
+    #ticker { font-size: 2.5rem; font-weight: bold; text-align: center; padding: 20px; background: #000; border-radius: 12px; margin: 20px auto; max-width: 600px; box-shadow: 0 0 40px var(--neon-cyan); }
     .price-up { color: #00ff88; } .price-down { color: #ff3366; }
-    .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .link-card {
-      background: rgba(255,255,255,0.05);
-      padding: 25px; border-radius: 12px;
-      text-align: center; border: 1px solid var(--neon-pink);
-      transition: all 0.3s;
-    }
-    .link-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px var(--neon-pink);
-      border-color: var(--neon-cyan);
-    }
-    footer { text-align: center; padding: 30px; opacity: 0.7; font-size: 0.9rem; }
+    .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    .link-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; text-align: center; border: 2px solid var(--neon-pink); transition: all 0.4s; }
+    .link-card:hover { transform: translateY(-10px); box-shadow: 0 0 50px var(--neon-pink); border-color: var(--neon-cyan); }
+    footer { text-align: center; padding: 40px; opacity: 0.8; font-size: 1rem; }
   </style>
 </head>
 <body>
   <nav>
     <a href="#btc">LIVE BTC</a>
     <a href="#links">REBEL LINKS</a>
-    <a href="https://x.com/sovereignmethod" target="_blank">X @BottomG 🏴‍☠️</a>
+    <a href="https://x.com/sovereignmethod" target="_blank">@sovereignmethod 🏴‍☠️</a>
   </nav>
 
   <section class="hero">
+    <!-- Upgraded Rebel Logo SVG: Cyber skull with BTC eye + crossed sabers -->
     <svg class="logo-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-      <!-- Skull + Pirate Flag + BTC -->
-      <circle cx="200" cy="200" r="160" fill="#1a1a2e" stroke="#00f0ff" stroke-width="20"/>
-      <path d="M120 140 Q160 80 200 140 Q240 80 280 140" fill="none" stroke="#ff00aa" stroke-width="30"/>
-      <!-- Eyes -->
-      <circle cx="150" cy="170" r="25" fill="#000"/>
-      <circle cx="250" cy="170" r="25" fill="#000"/>
-      <!-- BTC symbol -->
-      <text x="200" y="280" text-anchor="middle" fill="#f7931a" font-size="80" font-weight="bold">₿</text>
-      <!-- Flag -->
-      <polygon points="280,100 340,80 340,160" fill="#ff00aa"/>
-      <text x="310" y="130" fill="#fff" font-size="50" font-weight="bold">🏴‍☠️</text>
-      <text x="200" y="370" text-anchor="middle" fill="#00f0ff" font-size="45" font-weight="bold">RBLVNT</text>
+      <defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="8" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <!-- Background circle glow -->
+      <circle cx="200" cy="200" r="180" fill="none" stroke="#00f0ff" stroke-width="15" filter="url(#glow)"/>
+      <!-- Skull base -->
+      <path d="M100 120 Q200 40 300 120 Q350 200 300 280 Q200 360 100 280 Q50 200 100 120" fill="#1a1a2e" stroke="#ff00aa" stroke-width="20"/>
+      <!-- Eyes with BTC in one -->
+      <circle cx="140" cy="170" r="30" fill="#000" stroke="#00f0ff" stroke-width="5"/>
+      <circle cx="260" cy="170" r="30" fill="#000" stroke="#00f0ff" stroke-width="5"/>
+      <text x="260" y="195" text-anchor="middle" fill="#f7931a" font-size="50" font-weight="bold">₿</text>
+      <!-- Crossed sabers -->
+      <line x1="120" y1="240" x2="280" y2="160" stroke="#ff00aa" stroke-width="25" stroke-linecap="round"/>
+      <line x1="120" y1="160" x2="280" y2="240" stroke="#ff00aa" stroke-width="25" stroke-linecap="round"/>
+      <!-- Text -->
+      <text x="200" y="380" text-anchor="middle" fill="#00f0ff" font-size="60" font-weight="bold" filter="url(#glow)">RBLVNT</text>
     </svg>
     <h1>REBEL VENTURES</h1>
-    <p class="tagline">Breaking chains • Building futures • Owning the storm 🏴‍☠️</p>
+    <p class="tagline">Breaking chains • Owning the dip • Building the rebellion 🏴‍☠️</p>
   </section>
 
   <section id="btc" class="btc-section">
-    <h2 style="text-align:center; color:var(--neon-cyan); font-size:3rem;">LIVE BITCOIN FEED</h2>
-    <div id="ticker">Loading rebel price...</div>
+    <h2 style="text-align:center; color:var(--neon-cyan); font-size:3.5rem;">BITCOIN REBEL FEED</h2>
+    <div id="ticker">Loading live BTC price... hold fast 🏴‍☠️</div>
     
-    <!-- Real-time TradingView BTC Chart -->
-    <div class="tradingview-widget-container" style="margin:30px auto; max-width:1100px;">
+    <!-- TradingView Chart (with fallback) -->
+    <div class="tradingview-widget-container" style="height:500px; margin:30px auto;">
       <div id="tradingview_chart"></div>
+      <p id="chart-fallback" style="display:none; text-align:center; color:#ff3366;">Chart loading slow? Check console or try refresh. TradingView embed active.</p>
     </div>
   </section>
 
   <section id="links">
-    <h2 style="text-align:center; color:var(--neon-pink); font-size:2.8rem;">REBEL ARMORY</h2>
+    <h2 style="text-align:center; color:var(--neon-pink); font-size:3rem;">REBEL ARMORY</h2>
     <div class="links">
       <a href="https://grok.x.ai" target="_blank" class="link-card">
-        <i class="fas fa-robot" style="font-size:3rem; color:#00f0ff;"></i>
+        <i class="fas fa-robot fa-4x" style="color:#00f0ff; margin-bottom:15px;"></i>
         <h3>Grok</h3>
-        <p>Truth-seeking AI (built by xAI)</p>
+        <p>xAI truth machine – no bullshit</p>
       </a>
       <a href="https://www.luxalgo.com/chat/" target="_blank" class="link-card">
-        <i class="fas fa-chart-line" style="font-size:3rem; color:#ff00aa;"></i>
+        <i class="fas fa-chart-line fa-4x" style="color:#ff00aa; margin-bottom:15px;"></i>
         <h3>LuxAlgo Chat</h3>
-        <p>Elite trading signals & AI alpha</p>
+        <p>AI trading alpha – elite signals</p>
       </a>
       <a href="https://www.cnbc.com/bitcoin/" target="_blank" class="link-card">
-        <i class="fas fa-newspaper" style="font-size:3rem; color:#f7931a;"></i>
+        <i class="fas fa-newspaper fa-4x" style="color:#f7931a; margin-bottom:15px;"></i>
         <h3>CNBC Bitcoin</h3>
-        <p>Mainstream war room coverage</p>
+        <p>Mainstream chaos coverage</p>
       </a>
     </div>
   </section>
 
   <footer>
-    © 2026 Rebel Ventures • BottomG 🏴‍☠️ • Powered by GitHub Pages & pure rebellion
+    © 2026 Rebel Ventures • BottomG 🏴‍☠️ • Pure rebellion on GitHub Pages
   </footer>
 
   <script>
-    // Live BTC Ticker
+    // Improved BTC Ticker using Binance public API (more reliable, no key)
     async function updateTicker() {
       try {
-        const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true');
+        const res = await fetch('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT');
         const data = await res.json();
-        const btc = data.bitcoin;
-        const price = btc.usd.toLocaleString();
-        const change = btc.usd_24h_change.toFixed(2);
-        const color = change > 0 ? 'price-up' : 'price-down';
+        const price = parseFloat(data.lastPrice).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        const change = parseFloat(data.priceChangePercent).toFixed(2);
+        const colorClass = change > 0 ? 'price-up' : 'price-down';
         document.getElementById('ticker').innerHTML = 
-          `₿ ${price} <span class="${color}" style="font-size:1.4rem;">(${change > 0 ? '+' : ''}${change}% 24h)</span>`;
+          `₿ ${price} USD <span class="${colorClass}" style="font-size:1.6rem;">(${change > 0 ? '+' : ''}${change}% 24h)</span>`;
       } catch(e) {
-        document.getElementById('ticker').textContent = '₿ REBEL MODE • API OFFLINE';
+        console.error('Ticker fetch error:', e);
+        document.getElementById('ticker').textContent = '₿ API DOWN – Check console for rebel debug';
       }
     }
-    setInterval(updateTicker, 30000);
+    setInterval(updateTicker, 20000); // Update every 20s
     updateTicker();
 
     // TradingView Chart
-    const script = document.createElement('script');
-    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
-    script.async = true;
-    script.innerHTML = JSON.stringify({
+    const tvScript = document.createElement('script');
+    tvScript.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+    tvScript.async = true;
+    tvScript.innerHTML = JSON.stringify({
+      "autosize": true,
       "symbol": "BINANCE:BTCUSDT",
       "interval": "15",
+      "timezone": "Etc/UTC",
+      "theme": "dark",
+      "style": "1",
+      "locale": "en",
+      "toolbar_bg": "#000000",
+      "enable_publishing": false,
+      "hide_top_toolbar": false,
+      "hide_legend": false,
+      "save_image": false,
+      "container_id": "tradingview_chart"
+    });
+    document.getElementById('tradingview_chart').parentNode.appendChild(tvScript);
+
+    // Show fallback if chart doesn't load in 10s
+    setTimeout(() => {
+      if (!document.querySelector('iframe[src*="tradingview"]')) {
+        document.getElementById('chart-fallback').style.display = 'block';
+      }
+    }, 10000);
+  </script>
+</body>
+</html>
