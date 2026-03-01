@@ -11,66 +11,66 @@
     nav { background:rgba(0,0,0,0.8); padding:1rem; text-align:center; border-bottom:2px solid var(--neon-cyan); position:sticky; top:0; z-index:100; }
     nav a { color:var(--neon-cyan); margin:0 20px; text-decoration:none; font-weight:bold; }
     nav a:hover { text-shadow:0 0 15px var(--neon-cyan); }
-    .hero { text-align:center; padding:80px 20px 40px; }
+    .hero { text-align:center; padding:60px 20px 30px; }
     .logo-img { 
-      max-width:680px;  /* Bigger ship */
+      max-width:800px;  /* Even bigger ship – dial back to 700px if needed */
       height:auto; 
-      filter:drop-shadow(0 0 70px var(--neon-cyan)); 
+      filter:drop-shadow(0 0 80px var(--neon-cyan)); 
       transition:all 0.5s ease; 
     }
     .logo-img:hover { 
-      transform:scale(1.06) rotate(3deg); 
+      transform:scale(1.04) rotate(3deg); 
       animation:glitch 1.2s infinite; 
-      filter:drop-shadow(0 0 100px var(--neon-pink)) brightness(1.4); 
+      filter:drop-shadow(0 0 110px var(--neon-pink)) brightness(1.3); 
     }
     @keyframes glitch { 
-      0%{transform:translate(0) scale(1.06) rotate(3deg);} 
-      20%{transform:translate(-8px,8px) scale(1.06) rotate(3deg);} 
-      40%{transform:translate(8px,-8px) scale(1.06) rotate(3deg);} 
-      60%{transform:translate(-8px,0) scale(1.06) rotate(3deg);} 
-      80%{transform:translate(8px,8px) scale(1.06) rotate(3deg);} 
-      100%{transform:translate(0) scale(1.06) rotate(3deg);} 
+      0%{transform:translate(0) scale(1.04) rotate(3deg);} 
+      20%{transform:translate(-8px,8px) scale(1.04) rotate(3deg);} 
+      40%{transform:translate(8px,-8px) scale(1.04) rotate(3deg);} 
+      60%{transform:translate(-8px,0) scale(1.04) rotate(3deg);} 
+      80%{transform:translate(8px,8px) scale(1.04) rotate(3deg);} 
+      100%{transform:translate(0) scale(1.04) rotate(3deg);} 
     }
-    h1 { font-size:5.5rem; margin:20px 0 10px; color:var(--neon-cyan); text-shadow:0 0 50px var(--neon-cyan); }
-    .tagline { font-size:2.2rem; color:var(--neon-pink); text-shadow:0 0 30px var(--neon-pink); }
-    section { padding:40px 20px; max-width:1200px; margin:0 auto; }
+    h1 { font-size:5rem; margin:20px 0 10px; color:var(--neon-cyan); text-shadow:0 0 60px var(--neon-cyan); }
+    .tagline { font-size:2rem; color:var(--neon-pink); text-shadow:0 0 35px var(--neon-pink); }
+    section { padding:30px 20px; max-width:1200px; margin:0 auto; }
     .btc-section { 
       background:rgba(0,0,0,0.7); 
       border:2px solid var(--neon-purple); 
       border-radius:15px; 
-      padding:20px; 
-      margin:0 20px 60px; 
-      overflow:hidden; 
+      padding:25px; 
+      margin:0 20px 50px; 
+      text-align:center; 
     }
-    .btc-image { 
-      width:100%; 
-      max-width:1000px; 
-      height:auto; 
-      display:block; 
-      margin:0 auto; 
-      border-radius:10px; 
+    .ticker-wrapper { 
+      max-width:350px; 
+      margin:20px auto; 
+      border:2px solid var(--neon-cyan); 
+      border-radius:12px; 
+      overflow:hidden; 
       box-shadow:0 0 40px var(--neon-cyan); 
     }
-    .links { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; }
+    .ticker-wrapper iframe, .ticker-wrapper div { width:100% !important; }
+    .links { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin-top:40px; }
     .link-card { 
       background:rgba(255,255,255,0.05); 
-      padding:30px; 
+      padding:35px; 
       border-radius:15px; 
       text-align:center; 
       border:2px solid var(--neon-pink); 
       transition:all 0.4s; 
     }
     .link-card:hover { 
-      transform:translateY(-10px); 
-      box-shadow:0 0 50px var(--neon-pink); 
+      transform:translateY(-12px); 
+      box-shadow:0 0 60px var(--neon-pink); 
       border-color:var(--neon-cyan); 
     }
-    footer { text-align:center; padding:40px; opacity:0.8; font-size:1rem; }
+    footer { text-align:center; padding:50px 20px; opacity:0.7; font-size:1rem; }
   </style>
 </head>
 <body>
   <nav>
-    <a href="#btc">BTC SNAPSHOT</a>
+    <a href="#btc">BTC TICKER</a>
     <a href="#links">REBEL LINKS</a>
     <a href="https://x.com/sovereignmethod" target="_blank">@sovereignmethod 🏴‍☠️</a>
   </nav>
@@ -82,9 +82,13 @@
   </section>
 
   <section id="btc" class="btc-section">
-    <h2 style="text-align:center; color:var(--neon-cyan); font-size:2.8rem; margin-bottom:20px;">BITCOIN ARCADE SNAPSHOT</h2>
-    <img src="https://i.postimg.cc/3wQdQf9Z/bitcoin-neon-arcade-chart.png" alt="Neon arcade-style Bitcoin live chart" class="btc-image">
-    <p style="text-align:center; font-size:1.1rem; opacity:0.8; margin-top:15px;">Current vibe: volatile as fuck • Check live on Binance or LuxAlgo for real-time alpha</p>
+    <h2 style="color:var(--neon-cyan); font-size:2.8rem; margin-bottom:20px;">BITCOIN LIVE TICKER (CoinDesk)</h2>
+    <div class="ticker-wrapper">
+      <!-- Larger MPU size version -->
+      <div id="coindesk-widget" data-size="mpu"></div>
+      <script type="text/javascript" src="//widget.coindesk.com/bpiticker/coindesk-widget.min.js"></script>
+    </div>
+    <p style="font-size:1.1rem; opacity:0.8; margin-top:15px;">Powered by CoinDesk BPI • Real-time USD price + change</p>
   </section>
 
   <section id="links">
