@@ -1,173 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RBLVNT | Rebel Ventures 🏴‍☠️</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    :root { 
-      --neon-cyan: #00f0ff; 
-      --neon-pink: #ff00aa; 
-      --neon-purple: #8a2be2; 
-      --glitch: #ff3366; 
-    }
-    body { 
-      margin:0; padding:0; 
-      font-family:'Segoe UI',sans-serif; 
-      background:linear-gradient(135deg,#0a0015,#150033); 
-      color:#e0e0e0; 
-      min-height:100vh; 
-      overflow-x:hidden; 
-    }
-    nav { 
-      background:rgba(0,0,0,0.85); 
-      padding:1.2rem; 
-      text-align:center; 
-      border-bottom:3px solid var(--neon-cyan); 
-      position:sticky; top:0; z-index:100; 
-      backdrop-filter:blur(8px); 
-    }
-    nav a { 
-      color:var(--neon-cyan); 
-      margin:0 25px; 
-      text-decoration:none; 
-      font-weight:bold; 
-      font-size:1.2rem; 
-    }
-    nav a:hover { 
-      text-shadow:0 0 20px var(--neon-cyan); 
-      transform:scale(1.1); 
-      display:inline-block; 
-    }
-    .hero { 
-      text-align: center; 
-      padding: 80px 20px 60px; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      justify-content: center; 
-    }
-    .logo-img { 
-      max-width: 1100px; 
-      height: auto; 
-      display: block; 
-      margin: 0 auto 40px auto; 
-      filter: drop-shadow(0 0 120px var(--neon-cyan)); 
-      transition: all 0.4s ease; 
-    }
-    .logo-img:hover { 
-      transform: scale(1.06); 
-      animation: glitch 1s infinite alternate; 
-      filter: drop-shadow(0 0 160px var(--neon-pink)) brightness(1.4); 
-    }
-    @keyframes glitch {
-      0% { transform: translate(0, 0) scale(1.06); }
-      20% { transform: translate(-8px, 8px) scale(1.06); }
-      40% { transform: translate(8px, -8px) scale(1.06); }
-      60% { transform: translate(-8px, 0) scale(1.06); }
-      80% { transform: translate(8px, 8px) scale(1.06); }
-      100% { transform: translate(0, 0) scale(1.06); }
-    }
-    h1 { 
-      font-size: 7rem; 
-      margin: 0 0 20px 0; 
-      color: var(--neon-cyan); 
-      text-shadow: 0 0 80px var(--neon-cyan), 0 0 160px var(--neon-purple); 
-      letter-spacing: 8px; 
-      line-height: 1; 
-    }
-    .tagline { 
-      font-size: 2.8rem; 
-      color: var(--neon-pink); 
-      text-shadow: 0 0 50px var(--neon-pink); 
-      margin: 0; 
-    }
-    .links-section { 
-      padding: 80px 20px 120px; 
-      max-width: 1200px; 
-      margin: 0 auto; 
-      text-align: center; 
-    }
-    .links-title { 
-      color: var(--neon-pink); 
-      font-size: 4.5rem; 
-      margin-bottom: 70px; 
-      text-shadow: 0 0 60px var(--neon-pink); 
-    }
-    .links { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); 
-      gap: 50px; 
-    }
-    .link-card { 
-      background: rgba(255,255,255,0.04); 
-      padding: 60px 35px; 
-      border-radius: 30px; 
-      border: 4px solid var(--neon-pink); 
-      transition: all 0.5s ease; 
-      backdrop-filter: blur(8px); 
-    }
-    .link-card:hover { 
-      transform: translateY(-20px) scale(1.05); 
-      box-shadow: 0 0 100px var(--neon-pink); 
-      border-color: var(--neon-cyan); 
-    }
-    .link-card i { 
-      font-size: 6rem; 
-      margin-bottom: 30px; 
-    }
-    .link-card h3 { 
-      font-size: 2.5rem; 
-      margin: 20px 0 15px; 
-    }
-    .link-card p { 
-      font-size: 1.5rem; 
-      opacity: 0.9; 
-    }
-    footer { 
-      text-align: center; 
-      padding: 100px 20px 60px; 
-      opacity: 0.6; 
-      font-size: 1.2rem; 
-      border-top: 1px solid var(--neon-purple); 
-    }
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Rebel Ventures. A personal workshop for useful tools, independent thinking, and unusual interests.">
+<meta name="theme-color" content="#eceee6">
+<title>Rebel Ventures — Useful things. Unusual interests.</title>
+<style>
+:root{--paper:#eceee6;--ink:#28322b;--muted:#626a5d;--line:#c7cdbe;--rust:#a34528;--olive:#dce0d2;--dark:#28342b;--white:#f8f9f3;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--paper);font-synthesis:none;scroll-behavior:smooth}
+*{box-sizing:border-box}body{margin:0}button,input,textarea{font:inherit}button,a,input,textarea{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--rust);outline-offset:5px}button{cursor:pointer}button:disabled{cursor:default}.wrap{width:min(1160px,calc(100% - 88px));margin:auto}.mono{font-family:'Courier New',monospace;font-size:11px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase}.muted{color:var(--muted)}.skip{position:absolute;left:20px;top:-80px;background:var(--white);padding:15px;z-index:10}.skip:focus{top:15px}.header{height:104px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);gap:24px}.brand{display:flex;align-items:center;gap:13px}.wordmark{font-size:27px;font-weight:900;letter-spacing:-1.8px}.brand-mark{color:var(--rust);font-size:36px;font-weight:400}.brand small{max-width:70px;font-size:10px;line-height:1.35;letter-spacing:1.5px;font-weight:600}.nav{display:flex;align-items:center;gap:32px;font-size:13px}.nav a:hover,.text-link:hover{color:var(--rust)}.external{color:var(--muted);font-family:monospace}.hero{display:grid;grid-template-columns:1fr 240px;gap:35px;align-items:center;padding:85px 0 67px}.eyebrow{display:flex;align-items:center;gap:10px}.dot{height:6px;width:6px;background:var(--rust);display:inline-block}.hero h1{font-size:clamp(46px,6.9vw,88px);line-height:1.02;letter-spacing:-5px;font-weight:600;margin:29px 0 25px}.hero h1 span{color:var(--muted)}.intro{max-width:420px;line-height:1.7;font-size:16px;color:var(--muted);margin:0}.hero-actions{display:flex;gap:25px;align-items:center;margin-top:30px;font-size:13px}.solid-link{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;padding:15px 20px;background:var(--ink);color:var(--white);border:1px solid var(--ink)}.solid-link:hover{background:var(--rust);border-color:var(--rust)}.text-link{border-bottom:1px solid var(--line);padding:7px 0}.specimen{aspect-ratio:1;position:relative;display:grid;place-items:center;background:repeating-linear-gradient(0deg,transparent,transparent 23px,#ccd2c344 23px,#ccd2c344 24px),repeating-linear-gradient(90deg,transparent,transparent 23px,#ccd2c344 23px,#ccd2c344 24px);border:1px solid var(--line)}.specimen:before,.specimen:after{position:absolute;content:'+';font:18px monospace;color:var(--muted);top:5px;left:7px}.specimen:after{top:auto;left:auto;bottom:5px;right:7px}.specimen .cross{font-size:140px;letter-spacing:-16px;line-height:1;font-weight:800;transform:rotate(-12deg);color:var(--ink);padding-right:15px}.specimen .slash{color:var(--rust)}.specimen-label{position:absolute;bottom:16px;left:16px;font-size:9px;letter-spacing:1px}.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;padding:16px 0;color:var(--muted)}section[id]{scroll-margin-top:25px}.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:25px}.section-head h2{font-size:26px;letter-spacing:-.8px;font-weight:500;margin:0}.section-head .mono{color:var(--muted)}.section-num{font:12px monospace;color:var(--rust);margin-right:14px;vertical-align:middle}.resources{padding:54px 0}.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.resource{border:1px solid var(--line);padding:25px 24px 23px;min-height:176px;display:flex;flex-direction:column;transition:background .15s,border-color .15s}.resource:hover{background:var(--white);border-color:var(--ink)}.resource-top{display:flex;justify-content:space-between;color:var(--muted)}.resource h3{font-size:21px;letter-spacing:-.5px;font-weight:500;margin:28px 0 10px}.resource p{font-size:13px;line-height:1.5;margin:0;color:var(--muted)}.tools-band{background:var(--dark);color:var(--white);padding:48px 0 52px}.tools-band .section-head .mono{color:#b7c2ad}.tools-band .section-num{color:#e39e79}.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}.tool-head{display:flex;justify-content:space-between;align-items:baseline;gap:15px;margin:0 0 20px}.tool-head h3{font-size:19px;font-weight:400;margin:0;letter-spacing:-.4px}.tool-head .mono{color:#b7c2ad;font-size:10px}.input-row{display:grid;grid-template-columns:1fr 30px 1fr;gap:12px;align-items:end}.field label{display:block;font-size:11px;color:#c3cebc;margin-bottom:8px}.field input{width:100%;min-width:0;padding:14px 12px;background:#344238;border:1px solid #64715f;color:#f8f9f3;font-family:monospace;font-size:20px;border-radius:0}.equals{padding-bottom:17px;text-align:center;color:#bcc7b4}.presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.preset{background:transparent;border:1px solid #6a7665;color:#d7dfcd;padding:6px 11px;font:11px monospace;min-height:32px}.preset:hover{background:#45543e}.hint{font-size:12px;color:#b7c2ad;line-height:1.55;margin:14px 0 0}.note-area{display:block;width:100%;height:109px;resize:vertical;border:1px solid #64715f;background:#344238;padding:12px;color:#f8f9f3;font-size:14px;line-height:1.6;border-radius:0}.note-area::placeholder{color:#bdc6b5}.note-footer{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:10px;color:#b7c2ad;font-size:11px}.clear{border:0;background:none;text-decoration:underline;color:#d7dfcd;font-size:11px;padding:6px 0}.about{padding:62px 0;display:grid;grid-template-columns:1fr 1.2fr;gap:70px}.about h2{font-size:36px;font-weight:500;line-height:1.15;letter-spacing:-1.4px;margin:22px 0 0}.about p{font-size:16px;color:var(--muted);line-height:1.85;margin:0 0 18px}.interests{display:flex;gap:9px;flex-wrap:wrap}.interests span{font:10px monospace;text-transform:uppercase;letter-spacing:1px;padding:7px 10px;border:1px solid var(--line)}footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:24px;padding:28px 0 34px}.footer-brand{font-size:12px;font-weight:700}.footer-links{display:flex;gap:22px;font-size:11px;color:var(--muted)}@media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}*{transition:none!important}}@media(max-width:850px){.wrap{width:calc(100% - 48px)}.hero{grid-template-columns:1fr 170px;padding-top:62px}.hero h1{letter-spacing:-3px}.specimen .cross{font-size:100px}.tools-grid{gap:28px}.about{gap:35px}.nav{gap:20px}.brand small{display:none}}@media(max-width:600px){.wrap{width:calc(100% - 36px)}.header{height:83px}.wordmark{font-size:24px}.brand-mark{font-size:29px}.nav{gap:16px;font-size:12px}.nav .external{display:none}.hero{grid-template-columns:1fr;gap:0;padding:49px 0 40px}.hero h1{font-size:clamp(42px,10.5vw,62px);letter-spacing:-2.8px}.specimen{display:none}.intro{font-size:15px}.eyebrow{font-size:9px;letter-spacing:1px}.ticker{font-size:9px;letter-spacing:.6px}.ticker span:last-child{display:none}.resources{padding:37px 0}.section-head{gap:12px}.section-head h2{font-size:23px}.section-head>.mono{font-size:9px;letter-spacing:.7px}.resource-grid{grid-template-columns:1fr;gap:12px}.resource{min-height:0;padding:20px}.resource h3{margin-top:19px}.tools-grid{grid-template-columns:1fr;gap:33px}.tools-band{padding:35px 0 40px}.about{grid-template-columns:1fr;gap:23px;padding:42px 0}.about h2{font-size:31px;margin-top:15px}.about p{font-size:15px}.footer-links{gap:13px}.footer-links span{display:none}.hero-actions{gap:20px}.tool-head .mono{font-size:9px}.preset{min-height:40px}}
+</style>
 </head>
 <body>
-  <nav>
-    <a href="https://x.com/sovereignmethod" target="_blank">@sovereignmethod 🏴‍☠️</a>
-  </nav>
-
-  <section class="hero">
-    <img src="ship-logo.png" alt="RBLVNT Neon Pirate Ship Logo" class="logo-img">
-    <h1>REBEL VENTURES</h1>
-    <p class="tagline">Sailing the storm • Owning the chain • Building empires 🏴‍☠️</p>
-  </section>
-
-  <section class="links-section">
-    <h2 class="links-title">REBEL ARMORY</h2>
-    <div class="links">
-      <a href="https://grok.x.ai" target="_blank" class="link-card">
-        <i class="fas fa-robot"></i>
-        <h3>Grok</h3>
-        <p>xAI truth machine – no bullshit</p>
-      </a>
-      <a href="https://www.luxalgo.com/chat/" target="_blank" class="link-card">
-        <i class="fas fa-chart-line"></i>
-        <h3>LuxAlgo Chat</h3>
-        <p>AI trading alpha – elite signals</p>
-      </a>
-      <a href="https://www.cnbc.com/bitcoin/" target="_blank" class="link-card">
-        <i class="fas fa-newspaper"></i>
-        <h3>CNBC Bitcoin</h3>
-        <p>Mainstream chaos coverage</p>
-      </a>
-    </div>
-  </section>
-
-  <footer>
-    © 2026 Rebel Ventures • BottomG 🏴‍☠️ • Pure rebellion
-  </footer>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap"><header class="header"><a class="brand" href="#" aria-label="Rebel Ventures home"><span class="wordmark">RBLVNT<span class="brand-mark"> /</span></span><small>REBEL<br>VENTURES</small></a><nav class="nav" aria-label="Main navigation"><a href="#resources">Resources</a><a href="#tools">Tools</a><a href="#about">About</a><a class="external" href="https://x.com/sovereignmethod" target="_blank" rel="noopener noreferrer" aria-label="Sovereign Method on X, opens in a new tab">X ↗</a></nav></header></div>
+<main id="main">
+<div class="wrap"><section class="hero" aria-labelledby="hero-title"><div><div class="eyebrow mono"><span class="dot" aria-hidden="true"></span>Rebel Ventures · Independent by design</div><h1 id="hero-title">Useful things.<br><span>Unusual interests.</span></h1><p class="intro">A personal workshop for tools, experiments, and whatever catches my curiosity.</p><div class="hero-actions"><a class="solid-link" href="#tools">Open the toolbox <span aria-hidden="true">↓</span></a><a class="text-link" href="#about">Meet the maker ↗</a></div></div><div class="specimen" aria-hidden="true"><div class="cross">R<span class="slash">/</span></div><div class="specimen-label mono">RV — WORKSHOP / 001</div></div></section><div class="ticker mono"><span>Boise foothills, Idaho</span><span>Curiosity → Utility</span><span>Always a work in progress</span></div>
+<section class="resources" id="resources"><div class="section-head"><h2><span class="section-num">01</span>Within reach</h2><span class="mono">A few useful starting points</span></div><div class="resource-grid"><a class="resource" href="https://grok.x.ai" target="_blank" rel="noopener noreferrer"><div class="resource-top"><span class="mono">AI / Research</span><span aria-hidden="true">↗</span></div><h3>Grok</h3><p>Questions, rabbit holes, and another perspective.</p></a><a class="resource" href="https://www.luxalgo.com/chat/" target="_blank" rel="noopener noreferrer"><div class="resource-top"><span class="mono">Markets / Analysis</span><span aria-hidden="true">↗</span></div><h3>LuxAlgo Chat</h3><p>A starting point for exploring charts and trading ideas.</p></a><a class="resource" href="https://www.cnbc.com/bitcoin/" target="_blank" rel="noopener noreferrer"><div class="resource-top"><span class="mono">Bitcoin / News</span><span aria-hidden="true">↗</span></div><h3>Bitcoin coverage</h3><p>The latest Bitcoin headlines from CNBC.</p></a></div></section></div>
+<section class="tools-band" id="tools"><div class="wrap"><div class="section-head"><h2><span class="section-num">02</span>The toolbox</h2><span class="mono">Small tools. Real use.</span></div><div class="tools-grid"><div><div class="tool-head"><h3>Measure twice.</h3><span class="mono">Millimeters ↔ Inches</span></div><div class="input-row"><div class="field"><label for="mm">Millimeters</label><input id="mm" type="number" inputmode="decimal" step="any" min="0" value="40"></div><span class="equals" aria-hidden="true">⇄</span><div class="field"><label for="inches">Inches</label><input id="inches" type="number" inputmode="decimal" step="any" min="0" value="1.5748"></div></div><div class="presets" aria-label="Common watch case sizes"><button class="preset" type="button" data-mm="36">36 mm</button><button class="preset" type="button" data-mm="38">38 mm</button><button class="preset" type="button" data-mm="40">40 mm</button><button class="preset" type="button" data-mm="42">42 mm</button><button class="preset" type="button" data-mm="44">44 mm</button></div><p class="hint">For watch cases, parts, and the occasional questionable purchase.</p><p id="conversion-status" class="hint" role="status" hidden></p></div><div><div class="tool-head"><h3>Catch the thought.</h3><span class="mono">Scratchpad</span></div><label class="mono" for="note" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%)">Your notes</label><textarea id="note" class="note-area" placeholder="An idea. A part number. Something to look up later…" maxlength="20000"></textarea><div class="note-footer"><span id="note-status" role="status">Saved on this browser only.</span><button id="clear-note" class="clear" type="button">Clear note</button></div></div></div></div></section>
+<section class="about wrap" id="about"><div><div class="mono muted">03 / Behind the workbench</div><h2>Curiosity doesn't<br>need a business plan.</h2></div><div><p>I'm Sergio. Rebel Ventures is my corner of the internet—a place for useful tools, independent thinking, and interests that don't fit neatly into one box.</p><p>Usually somewhere between watches, technology, markets, and two wheels in the Boise foothills.</p><div class="interests" aria-label="Interests"><span>Tools</span><span>Watches</span><span>Technology</span><span>Two wheels</span></div></div></section>
+</main>
+<div class="wrap"><footer><div class="footer-brand">REBEL VENTURES <span style="color:var(--rust)">/</span></div><div class="footer-links"><span>Useful by nature.</span><a href="https://x.com/sovereignmethod" target="_blank" rel="noopener noreferrer">@sovereignmethod ↗</a><a href="#">Back up ↑</a></div></footer></div>
+<script>
+(()=>{'use strict';
+const mm=document.getElementById('mm'),inches=document.getElementById('inches'),conversionStatus=document.getElementById('conversion-status');
+function convert(source,target,factor){if(source.value===''){target.value='';conversionStatus.hidden=true;return;}const value=Number(source.value);if(!Number.isFinite(value)||value<0){target.value='';conversionStatus.textContent='Enter a positive measurement or zero.';conversionStatus.hidden=false;return;}const converted=value*factor;if(!Number.isFinite(converted)){target.value='';conversionStatus.textContent='That measurement is too large.';conversionStatus.hidden=false;return;}conversionStatus.hidden=true;target.value=String(Number(converted.toFixed(4)));}
+mm.addEventListener('input',()=>convert(mm,inches,1/25.4));inches.addEventListener('input',()=>convert(inches,mm,25.4));document.querySelectorAll('[data-mm]').forEach(button=>button.addEventListener('click',()=>{mm.value=button.dataset.mm;convert(mm,inches,1/25.4);}));
+const note=document.getElementById('note'),status=document.getElementById('note-status'),clear=document.getElementById('clear-note'),key='rblvnt-workshop-note-v1';let storageAvailable=true,clearedNote=null;
+try{note.value=localStorage.getItem(key)||'';}catch{storageAvailable=false;status.textContent='Browser storage unavailable. Copy your note before leaving.';}
+function save(){try{localStorage.setItem(key,note.value);storageAvailable=true;status.textContent='Saved on this browser only.';}catch{storageAvailable=false;status.textContent='Not saved. Copy your note before leaving.';}}
+note.addEventListener('input',()=>{clearedNote=null;clear.textContent='Clear note';save();});clear.addEventListener('click',()=>{if(clearedNote!==null){note.value=clearedNote;clearedNote=null;clear.textContent='Clear note';save();}else if(note.value){clearedNote=note.value;note.value='';save();clear.textContent='Undo clear';if(storageAvailable)status.textContent='Note cleared. You can undo this.';}note.focus();});
+})();
+</script>
 </body>
 </html>
