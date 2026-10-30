@@ -106,14 +106,22 @@ function advance(dir){if(stories.length){index=(index+dir+Math.min(8,stories.len
 $('hero').addEventListener('mouseenter',()=>hovered=true);$('hero').addEventListener('mouseleave',()=>hovered=false);$('hero').addEventListener('focusin',()=>focused=true);$('hero').addEventListener('focusout',()=>focused=false);setInterval(()=>{if(!paused&&!hovered&&!focused&&!document.hidden&&stories.length>1)advance(1)},9000);
 let newsColumns={center:[],left:[],right:[]},railLimits={left:6,right:6};
 function shuffled(items){const copy=[...items];for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]]}return copy}
-function mixTopics(items){
+function storyTime(item,now=Date.now()){const time=Date.parse(item.date);return Number.isFinite(time)&&time<=now+300000?time:-Infinity}
+function freshnessBand(item,now=Date.now()){const time=storyTime(item,now);if(time===-Infinity)return 4;const hours=Math.max(0,now-time)/3600000;return hours<6?0:hours<24?1:hours<48?2:3}
+function mixTopics(items,now=Date.now()){
+ // Deduplicate newest-first so an older copy cannot displace a fresh story.
+ const ordered=[...items].sort((a,b)=>storyTime(b,now)-storyTime(a,now)),groups=Array.from({length:5},()=>[]),urls=new Set(),titles=new Set();
+ for(const item of ordered){if(urls.has(item.url)||titles.has(item.title))continue;urls.add(item.url);titles.add(item.title);groups[freshnessBand(item,now)].push(item)}
+ return groups.flatMap(group=>mixTopicGroup(group));
+}
+function mixTopicGroup(items){
  const buckets=new Map();for(const item of items){if(!buckets.has(item.topic))buckets.set(item.topic,[]);buckets.get(item.topic).push(item)}
- const queues=[...buckets].map(([topic,list])=>({topic,items:shuffled(list),used:0})),mixed=[],seenURLs=new Set(),seenTitles=new Set();let lastTopic;
+ const queues=[...buckets].map(([topic,list])=>({topic,items:[...list].reverse(),used:0})),mixed=[],seenURLs=new Set(),seenTitles=new Set();let lastTopic;
  while(true){for(const q of queues)while(q.items.length&&(seenURLs.has(q.items.at(-1).url)||seenTitles.has(q.items.at(-1).title)))q.items.pop();const available=queues.filter(q=>q.items.length);if(!available.length)break;
  const different=available.filter(q=>q.topic!==lastTopic),candidates=different.length?different:available,min=Math.min(...candidates.map(q=>q.used)),ties=candidates.filter(q=>q.used===min),chosen=ties[Math.floor(Math.random()*ties.length)],item=chosen.items.pop();chosen.used++;lastTopic=chosen.topic;seenURLs.add(item.url);seenTitles.add(item.title);mixed.push(item);
  }return mixed;
 }
-function splitNews(items){
+function splitNews(items,now=Date.now()){
  const result={center:[],left:[],right:[]},counts={center:new Map(),left:new Map(),right:new Map()};
  // Balance each topic across columns before mixing within each column.
  // A fixed stride would put every story of a topic in one column with 3 or 6 tags.
@@ -121,7 +129,7 @@ function splitNews(items){
  const sides=['center','left','right'],minimum=Math.min(...sides.map(side=>counts[side].get(item.topic)||0)),eligible=sides.filter(side=>(counts[side].get(item.topic)||0)===minimum),shortest=Math.min(...eligible.map(side=>result[side].length)),ties=eligible.filter(side=>result[side].length===shortest),side=ties[Math.floor(Math.random()*ties.length)];
  result[side].push(item);counts[side].set(item.topic,(counts[side].get(item.topic)||0)+1);
  }
- for(const side of Object.keys(result))result[side]=mixTopics(result[side]);return result;
+ for(const side of Object.keys(result))result[side]=mixTopics(result[side],now);return result;
 }
 function renderNewsRail(side,message='No more stories in this topic yet. Try another tag or Refresh.'){
  const wrap=$(side+'-news-content'),items=newsColumns[side];wrap.replaceChildren();
@@ -139,7 +147,7 @@ async function loadNews(){
  const results=await Promise.allSettled(topics.map(async t=>{const r=await fetch(NEWS_API_ORIGIN+'/api/news?q='+encodeURIComponent(t),{signal:AbortSignal.timeout(30000)});const d=await r.json();if(!r.ok)throw Error(d.error||'News unavailable');return d.stories}));if(run!==newsRun)return;
  const lists=results.flatMap((result,i)=>result.status==='fulfilled'?[result.value.slice(0,16).map(story=>({...story,topic:topics[i]}))]:[]);stories=mixTopics(lists.flat());index=0;visibleCount=2;newsColumns=splitNews(stories);
  const failed=results.filter(x=>x.status==='rejected').length;$('refresh-news').disabled=false;
- if(stories.length){$('news-status').textContent=(active==='All'?'Your shuffled mix':active)+' · '+stories.length+' stories'+(failed?' · Some topics unavailable':' · Updated now');renderHero();renderStories();renderNewsRails()}
+ if(stories.length){$('news-status').textContent=(active==='All'?'Fresh first · Mixed topics':active)+' · '+stories.length+' stories'+(failed?' · Some topics unavailable':' · Updated now');renderHero();renderStories();renderNewsRails()}
  else{$('news-status').textContent='News is unavailable right now.';const empty=make('div','loading-hero');empty.append(make('span','eyebrow','A QUIET MOMENT'),make('h1','','Your feed will be back.'),make('p','','The news sources didn’t respond. Your tags are saved—try Refresh in a moment.'));$('hero').replaceChildren(empty);$('story-grid').replaceChildren();$('more-news').hidden=true;renderNewsRails('Headlines are temporarily unavailable. Use Refresh to try again.');}
 }
 $('refresh-news').onclick=loadNews;
