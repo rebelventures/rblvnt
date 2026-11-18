@@ -449,7 +449,7 @@ function marketSession(now=new Date()){
   if(closed){
    const jokes=['Even the bulls need a nap.','Wall Street is touching grass. Allegedly.','The bears have clocked out, too.','No candles. No chaos. Enjoy the quiet.'];
    closedBox.querySelector('strong').textContent=jokes[now.getDate()%jokes.length];
-   closedBox.querySelector('div span').textContent=session.reason==='holiday'?'Exchange holiday · enjoy the day off.':mode==='cash'&&!['Sat','Sun'].includes(marketClock(now).weekday)?'Cash market closed · futures view returns at 6 p.m. MT.':'Trading is closed · we’ll check again automatically.';
+   closedBox.querySelector(':scope > div > span').textContent=session.reason==='holiday'?'Exchange holiday · enjoy the day off.':mode==='cash'&&!['Sat','Sun'].includes(marketClock(now).weekday)?'Cash market closed · futures view returns at 6 p.m. MT.':'Trading is closed · we’ll check again automatically.';
   }
   grid.replaceChildren();
   names[mode].forEach((name,i)=>{
