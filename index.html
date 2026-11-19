@@ -78,7 +78,7 @@
 <dialog id="editor"><form id="editor-form"><div class="dialog-head"><h2 id="editor-title"></h2><button type="button" id="close-editor" class="icon-button" aria-label="Close dialog">×</button></div><p id="editor-description"></p><div id="editor-fields"></div><p class="form-error" id="editor-error" role="alert"></p><div class="dialog-actions"><button type="button" id="cancel-editor" class="secondary">Cancel</button><button type="submit" id="editor-save" class="primary">Save</button></div></form></dialog>
 <script>const NEWS_API_ORIGIN='https://rblvnt-news.nvk8bvbqk5.chatgpt.site';
 (()=>{'use strict';
-const $=id=>document.getElementById(id),make=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n},ext=(url)=>{const a=make('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a};
+const $=id=>document.getElementById(id),make=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n},ext=(url)=>{const a=make('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.addEventListener('click',event=>{if(event.button===0&&!event.ctrlKey&&!event.metaKey&&!event.shiftKey&&!event.altKey){event.preventDefault();window.open(a.href,'_blank','noopener,noreferrer')}});return a};
 const key='rblvnt-start-v1',defaults={tags:['Bitcoin','AI','Watches','World'],shortcuts:[['ChatGPT','https://chatgpt.com'],['YouTube','https://youtube.com'],['X','https://x.com'],['GitHub','https://github.com'],['Robinhood','https://robinhood.com'],['AliExpress','https://aliexpress.com'],['Outlook','https://outlook.live.com']].map(([name,url])=>({name,url})),channels:[],x:'',newsLeaning:'all',hideLeftNews:false,hideRightNews:false,autoplay:!matchMedia('(prefers-reduced-motion: reduce)').matches};
 let state=structuredClone(defaults),storageBlocked=false,active='All',stories=[],index=0,visibleCount=2,paused=matchMedia('(prefers-reduced-motion: reduce)').matches,hovered=false,focused=false,newsRun=0,modalSave=null;
 let theme=document.documentElement.dataset.theme||'dim';
@@ -453,16 +453,16 @@ function marketSession(now=new Date()){
   }
   grid.replaceChildren();
   names[mode].forEach((name,i)=>{
-   const q=quotes.find(q=>q.symbol===symbols[mode][i]),a=document.createElement('a');a.className='market-quote';a.href='https://finance.yahoo.com/quote/'+encodeURIComponent(symbols[mode][i])+'/';a.target='_blank';a.rel='noopener noreferrer';
+   const q=quotes.find(q=>q.symbol===symbols[mode][i]),a=document.createElement('a');a.className='market-quote';a.href='https://finance.yahoo.com/quote/'+encodeURIComponent(symbols[mode][i])+'/';a.target='_blank';a.rel='noopener noreferrer';a.addEventListener('click',event=>{if(event.button===0&&!event.ctrlKey&&!event.metaKey&&!event.shiftKey&&!event.altKey){event.preventDefault();window.open(a.href,'_blank','noopener,noreferrer')}});
    const stale=q?.at&&now.getTime()-q.at>30*60000;
    const valid=Number.isFinite(q?.price),change=Number.isFinite(q?.change)&&Number.isFinite(q?.percent);
-   if(valid&&change&&!closed&&!stale)a.classList.add(q.change>0?'market-up':q.change<0?'market-down':'market-flat');
+   if(valid&&change)a.classList.add(q.change>0?'market-up':q.change<0?'market-down':'market-flat');
    const title=document.createElement('span');title.className='market-name';title.textContent=name;
    const price=document.createElement('strong');price.textContent=valid?num(q.price):'—';
    const delta=document.createElement('span');delta.className='market-change';delta.textContent=change?(q.change>0?'▲ +':q.change<0?'▼ −':'• ')+num(Math.abs(q.change))+' ('+(q.percent>0?'+':q.percent<0?'−':'')+num(Math.abs(q.percent))+'%)':error||q?.error?'Quote unavailable':'Loading quote…';
    const stamp=document.createElement('small');stamp.textContent=valid?(closed?'Last quote · ':stale?'Stale · ':'As of ')+(new Intl.DateTimeFormat('en-US',{timeZone:MARKET_ZONE,month:'short',day:'numeric'}).format(new Date(q.at)))+' · '+time(q.at):'Yahoo Finance';
    if(valid)a.title=new Intl.DateTimeFormat('en-US',{timeZone:MARKET_ZONE,dateStyle:'medium',timeStyle:'short'}).format(new Date(q.at))+' Mountain time';
-   a.append(title,price,delta,stamp);grid.append(a);
+   a.setAttribute('aria-label',name+' '+(valid?num(q.price):'quote')+' — opens in a new tab');a.append(title,price,delta,stamp);grid.append(a);
   });
   notice.textContent=error?'Quote feed unavailable. Tap a card to check its source.':'Yahoo Finance · quotes may be delayed · changes vs prior daily close';
   document.getElementById('market-refresh').disabled=busy;
